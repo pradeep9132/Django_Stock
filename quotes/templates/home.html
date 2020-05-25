@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% block content %}
+
+
+{% if ticker %}
+	{{ticker}}
+{% endif %}
+
+{% if api %}
+	{% if api == "Error..." %}
+		There was a Problem in the stock, please correct...
+	{% else %}
+
+		<h1>{{ api.symbol }} </h1><br/>
+		<h1>{{ api.companyName }}</h1><br/>
+		Curr Price: {{ api.lastPrice }}<br/>
+		Prev Close: {{ api.previousClose }}<br/>
+		Open Price: {{ api.open }}<br/>
+		Day High: {{ api.dayHigh }}<br/>
+		Day Low: {{ api.dayLow }}<br/>
+		Percent Change: {{ api.pChange }}<br/>
+		Close Price: {{ api.closePrice }}<br/>
+
+		<!--{% for key,value in api.items %}
+			{{ key }}: {{ value }}<br/>
+		{% endfor %}-->
+	{% endif %}
+{% endif %}
+
+{% endblock %}
